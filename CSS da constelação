@@ -1,0 +1,141 @@
+/* =========================================================
+   👑 CRÉDITOS / AUTOR DO CÓDIGO
+
+   Autor: Kingg
+   Cargo: Adm/CEO da Sankingg e Prime Spark / Dev
+
+   🌐 SERVIDORES DISCORD:
+
+   Prime Spark:
+   https://discord.gg/CZXQWgjkYH
+
+   Sankingg — Mais códigos:
+   https://discord.gg/eY9gmVG6KG
+
+   📦 REPOSITÓRIO:
+   https://github.com/SankinggStore/repositore
+
+   📱 CONTATOS:
+
+   WhatsApp:
+   +55 19 97137-2646
+
+   Instagram:
+   @_sankingg.store
+
+   =========================================================
+   💜 PRIME SPARK x SANKINGG 👑
+   ========================================================= */
+
+
+/* =========================================================
+   🌌 FUNDO DE PARTÍCULAS — CONSTELAÇÃO
+   ========================================================= */
+
+
+/* =========================================================
+   🖼️ CANVAS DA CONSTELAÇÃO
+   =========================================================
+
+   Este elemento é criado automaticamente pelo JavaScript.
+
+   ID utilizado pelo JS:
+   #constellation-bg
+
+   ========================================================= */
+
+#constellation-bg {
+
+
+    /* =====================================================
+       📌 POSIÇÃO
+
+       fixed:
+       Mantém a constelação presa à tela.
+
+       Mesmo que o usuário role a página,
+       o fundo continua acompanhando a tela.
+
+       ===================================================== */
+
+    position: fixed;
+
+
+    /* =====================================================
+       📍 POSIÇÃO VERTICAL
+
+       0 = começa no topo da tela.
+
+       Para alterar, mude o valor abaixo.
+
+       ===================================================== */
+
+    top: 0;
+
+
+    /* =====================================================
+       📍 POSIÇÃO HORIZONTAL
+
+       0 = começa no lado esquerdo da tela.
+
+       ===================================================== */
+
+    left: 0;
+
+
+    /* =====================================================
+       🔽 CAMADA DO FUNDO
+
+       -1:
+       Coloca a constelação atrás do conteúdo.
+
+       Se precisar colocar o canvas em outra camada,
+       altere este valor.
+
+       ⚠️ Normalmente mantenha em -1.
+
+       ===================================================== */
+
+    z-index: -1;
+
+
+    /* =====================================================
+       🚫 INTERAÇÃO COM O USUÁRIO
+
+       none:
+       Permite clicar normalmente nos elementos da página.
+
+       A constelação não bloqueia:
+       • Botões
+       • Links
+       • Menus
+       • Campos
+       • Outros elementos
+
+       ===================================================== */
+
+    pointer-events: none;
+
+
+    /* =====================================================
+       📐 LARGURA
+
+       100%:
+       Ocupa toda a largura disponível.
+
+       ===================================================== */
+
+    width: 100%;
+
+
+    /* =====================================================
+       📐 ALTURA
+
+       100%:
+       Ocupa toda a altura disponível.
+
+       ===================================================== */
+
+    height: 100%;
+
+}
