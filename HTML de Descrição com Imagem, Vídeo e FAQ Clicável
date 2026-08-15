@@ -1,15 +1,47 @@
+<!-- =========================================================
+     👑 CRÉDITOS / AUTOR DO CÓDIGO
+
+     Autor: Kingg
+     Cargo: Adm/CEO da Sankingg e Prime Spark / Dev
+
+     🌐 SERVIDORES DISCORD:
+
+     Prime Spark:
+     https://discord.gg/CZXQWgjkYH
+
+     Sankingg — Mais códigos:
+     https://discord.gg/eY9gmVG6KG
+
+     📦 REPOSITÓRIO:
+
+     GitHub:
+     https://github.com/SankinggStore/repositore
+
+     📱 CONTATOS:
+
+     WhatsApp:
+     +55 19 97137-2646
+
+     Instagram:
+     @_sankingg.store
+
+     =========================================================
+     💜 PRIME SPARK x SANKINGG 👑
+     ========================================================= -->
+
+
 <p>
     <style>
         /* =========================================================
            🎨 CONFIGURAÇÕES VISUAIS
            ========================================================= */
-        
+
         .er-wrapper * {
             box-sizing: border-box !important;
             margin: 0;
             padding: 0;
         }
-        
+
         .er-wrapper {
             display: flex !important;
             justify-content: center !important;
@@ -18,7 +50,7 @@
             font-family: 'Segoe UI', sans-serif !important;
             overflow-x: hidden !important;
         }
-        
+
         .er-container {
             background-color: #0d041a !important;
             border: 1px solid #32105e !important;
@@ -29,7 +61,7 @@
             color: #e0e0e0 !important;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8) !important;
         }
-        
+
         .er-title {
             text-align: center !important;
             color: #ffffff !important;
@@ -39,7 +71,7 @@
             margin-bottom: 5px !important;
             line-height: 1.1 !important;
         }
-        
+
         .er-subtitle {
             text-align: center !important;
             color: #a855f7 !important;
@@ -47,11 +79,11 @@
             margin-bottom: 20px !important;
             display: block !important;
         }
-        
+
         /* =========================================================
            🖼️ IMAGEM
            ========================================================= */
-        
+
         .er-media {
             width: 100% !important;
             border-radius: 10px !important;
@@ -59,22 +91,22 @@
             display: block !important;
             border: 1px solid #32105e !important;
         }
-        
+
         /* =========================================================
            📋 COLUNAS
            ========================================================= */
-        
+
         .er-flex-row {
             display: flex !important;
             flex-direction: row !important;
             gap: 25px !important;
         }
-        
+
         .er-column {
             flex: 1 !important;
             min-width: 0 !important;
         }
-        
+
         .er-header {
             color: #ffffff !important;
             font-size: 15px !important;
@@ -83,7 +115,7 @@
             padding-bottom: 5px !important;
             border-bottom: 1px solid rgba(168, 85, 247, 0.2) !important;
         }
-        
+
         .er-item {
             position: relative !important;
             padding-left: 25px !important;
@@ -92,39 +124,65 @@
             line-height: 1.4 !important;
             color: #ccc !important;
         }
-        
+
         .er-item::before {
             position: absolute !important;
             left: 0 !important;
             top: 0 !important;
             font-size: 14px !important;
         }
-        
-        .er-check::before { content: "✅" !important; }
-        .er-game::before { content: "🎮" !important; }
-        .er-test::before { content: "🧪" !important; }
-        .er-off::before { content: "💳" !important; }
-        .er-clock::before { content: "🕒" !important; }
-        .er-star::before { content: "⭐" !important; }
-        .er-cloud::before { content: "🚫" !important; }
-        .er-lock::before { content: "🔒" !important; }
-        .er-warn::before { content: "⚠️" !important; }
-        
+
+        .er-check::before {
+            content: "✅" !important;
+        }
+
+        .er-game::before {
+            content: "🎮" !important;
+        }
+
+        .er-test::before {
+            content: "🧪" !important;
+        }
+
+        .er-off::before {
+            content: "💳" !important;
+        }
+
+        .er-clock::before {
+            content: "🕒" !important;
+        }
+
+        .er-star::before {
+            content: "⭐" !important;
+        }
+
+        .er-cloud::before {
+            content: "🚫" !important;
+        }
+
+        .er-lock::before {
+            content: "🔒" !important;
+        }
+
+        .er-warn::before {
+            content: "⚠️" !important;
+        }
+
         /* =========================================================
            ❓ FAQ CLICÁVEL
            ========================================================= */
-        
+
         .er-faq-section {
             margin-top: 20px !important;
         }
-        
+
         .er-faq-header {
             color: #ffffff !important;
             font-size: 15px !important;
             font-weight: bold !important;
             margin-bottom: 12px !important;
         }
-        
+
         .er-faq {
             background-color: rgba(255, 255, 255, 0.03) !important;
             border-radius: 6px !important;
@@ -132,8 +190,11 @@
             border-left: 3px solid #32105e !important;
             overflow: hidden !important;
         }
-        
-        /* PERGUNTA */
+
+        /* =========================================================
+           💬 PERGUNTA
+           ========================================================= */
+
         .er-q {
             font-weight: bold !important;
             color: #a855f7 !important;
@@ -144,13 +205,15 @@
             list-style: none !important;
             user-select: none !important;
         }
-        
-        /* Remove a setinha padrão */
+
         .er-q::-webkit-details-marker {
             display: none !important;
         }
-        
-        /* Sinal + quando fechado */
+
+        /* =========================================================
+           ➕ / ➖ ÍCONE DO FAQ
+           ========================================================= */
+
         .er-q::after {
             content: "＋" !important;
             float: right !important;
@@ -158,13 +221,15 @@
             font-size: 16px !important;
             font-weight: bold !important;
         }
-        
-        /* Sinal − quando aberto */
+
         .er-faq[open] .er-q::after {
             content: "−" !important;
         }
-        
-        /* Resposta */
+
+        /* =========================================================
+           💬 RESPOSTA
+           ========================================================= */
+
         .er-a {
             display: block !important;
             color: #ccc !important;
@@ -173,64 +238,64 @@
             padding: 10px !important;
             border-top: 1px solid rgba(168, 85, 247, 0.15) !important;
         }
-        
+
         .er-item b,
         .er-faq b {
             color: #fff !important;
         }
-        
+
         /* =========================================================
            📱 CELULAR
            ========================================================= */
-        
+
         @media (max-width: 600px) {
-        
+
             .er-wrapper {
                 padding: 5px 2px !important;
             }
-        
+
             .er-container {
                 padding: 15px 5px !important;
                 border-radius: 8px !important;
             }
-        
+
             .er-flex-row {
                 flex-direction: column !important;
                 gap: 15px !important;
             }
-        
+
             .er-title {
                 font-size: 18px !important;
             }
-        
+
             .er-subtitle {
                 font-size: 11px !important;
                 margin-bottom: 15px !important;
             }
-        
+
             .er-item {
                 font-size: 12px !important;
                 padding-left: 20px !important;
             }
-        
+
             .er-item::before {
                 font-size: 12px !important;
             }
-        
+
             .er-header {
                 font-size: 14px !important;
                 margin-bottom: 10px !important;
             }
-        
+
             .er-faq-header {
                 font-size: 14px !important;
             }
-        
+
             .er-q {
                 font-size: 12px !important;
                 padding: 11px 9px !important;
             }
-        
+
             .er-a {
                 font-size: 11px !important;
                 padding: 9px !important;
@@ -241,9 +306,17 @@
 
 
 <div class="er-wrapper">
+
     <div class="er-container">
 
-        <h1 class="er-title">GTA 5 XBOX</h1>
+
+        <!-- =====================================================
+             🎮 TÍTULO DO PRODUTO
+             ===================================================== -->
+
+        <h1 class="er-title">
+            GTA 5 XBOX
+        </h1>
 
         <span class="er-subtitle">
             🎮 Grand Theft Auto V — Xbox
@@ -255,6 +328,11 @@
              ===================================================== -->
 
         <div class="er-flex-row">
+
+
+            <!-- =================================================
+                 📦 COLUNA 1
+                 ================================================= -->
 
             <div class="er-column">
 
@@ -290,9 +368,9 @@
             </div>
 
 
-            <!-- =====================================================
-                 💡 INFORMAÇÕES IMPORTANTES
-                 ===================================================== -->
+            <!-- =================================================
+                 💡 COLUNA 2
+                 ================================================= -->
 
             <div class="er-column">
 
@@ -335,13 +413,17 @@
                 🖼️ Imagens do Produto
             </div>
 
-            <img class="er-media" src="https://SuaImagem.png;" alt="GTA 5 XBOX">
+            <img
+                class="er-media"
+                src="https://cdn.discordapp.com/attachments/1532163948793823233/1533666839211675819/1_20260715_143701_0000.png?ex=6a7e810c&is=6a7d2f8c&hm=a33fe570dceaf55521d4c2f0893a3df9d0967885273bd1b2aab1b60bc3616bf5&"
+                alt="GTA 5 XBOX"
+            >
 
         </div>
 
 
         <!-- =====================================================
-             ❓ PERGUNTAS FREQUENTES — CLICÁVEIS
+             ❓ PERGUNTAS FREQUENTES
              ===================================================== -->
 
         <div class="er-faq-section">
@@ -351,7 +433,10 @@
             </div>
 
 
-            <!-- PERGUNTA 1 -->
+            <!-- =================================================
+                 PERGUNTA 1
+                 ================================================= -->
+
             <details class="er-faq">
 
                 <summary class="er-q">
@@ -365,7 +450,10 @@
             </details>
 
 
-            <!-- PERGUNTA 2 -->
+            <!-- =================================================
+                 PERGUNTA 2
+                 ================================================= -->
+
             <details class="er-faq">
 
                 <summary class="er-q">
@@ -379,7 +467,10 @@
             </details>
 
 
-            <!-- PERGUNTA 3 -->
+            <!-- =================================================
+                 PERGUNTA 3
+                 ================================================= -->
+
             <details class="er-faq">
 
                 <summary class="er-q">
@@ -392,10 +483,40 @@
 
             </details>
 
+
         </div>
 
+
     </div>
+
 </div>
+
 
 <br>
 <p><br></p>
+
+
+<!-- =========================================================
+     👑 CRÉDITOS FINAIS — OCULTOS NA PÁGINA
+
+     Autor: Kingg
+     Adm/CEO da Sankingg e Prime Spark / Dev
+
+     💜 PRIME SPARK:
+     https://discord.gg/CZXQWgjkYH
+
+     💻 SANKINGG — MAIS CÓDIGOS:
+     https://discord.gg/eY9gmVG6KG
+
+     📦 GITHUB / REPOSITÓRIO:
+     https://github.com/SankinggStore/repositore
+
+     📱 WHATSAPP:
+     +55 19 97137-2646
+
+     📸 INSTAGRAM:
+     @_sankingg.store
+
+     =========================================================
+     💜 PRIME SPARK x SANKINGG 👑
+     ========================================================= -->
