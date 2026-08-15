@@ -1,0 +1,553 @@
+/* =========================================================
+   👑 CRÉDITOS / AUTOR DO CÓDIGO
+
+   Autor: Kingg
+   Cargo: Adm/CEO da Sankingg e Prime Spark / Dev
+
+   🌐 SERVIDORES DISCORD:
+
+   Prime Spark:
+   https://discord.gg/CZXQWgjkYH
+
+   Sankingg — Mais códigos:
+   https://discord.gg/eY9gmVG6KG
+
+   📦 REPOSITÓRIO:
+   https://github.com/SankinggStore/repositore
+
+   📱 CONTATOS:
+
+   WhatsApp:
+   +55 19 97137-2646
+
+   Instagram:
+   @_sankingg.store
+
+   =========================================================
+   💜 PRIME SPARK x SANKINGG 👑
+   ========================================================= */
+
+
+/* =========================================================
+   🌌 JS — FUNDO DE PARTÍCULAS / CONSTELAÇÃO
+   ========================================================= */
+
+(function () {
+
+    'use strict';
+
+
+    /* =========================================================
+       🛑 EVITA CRIAR A CONSTELAÇÃO MAIS DE UMA VEZ
+       ========================================================= */
+
+    if (document.getElementById('constellation-bg')) {
+        return;
+    }
+
+
+    /* =========================================================
+       ⚙️ CONFIGURAÇÕES DA CONSTELAÇÃO
+       =========================================================
+
+       🎨 COR DA CONSTELAÇÃO:
+       Altere "particleColor" para mudar a cor das
+       partículas e das linhas.
+
+       Exemplos:
+
+       Azul:
+       '#3b82f6'
+
+       Roxo:
+       '#7f00ff'
+
+       Ciano:
+       '#00ffff'
+
+       Vermelho:
+       '#ff0000'
+
+       Verde:
+       '#00ff66'
+
+       Branco:
+       '#ffffff'
+
+       ========================================================= */
+
+    const particleColor = '#3b82f6';
+
+
+    /* =========================================================
+       ⭐ QUANTIDADE DE PARTÍCULAS
+       =========================================================
+
+       Controla quantos pontos aparecem na tela.
+
+       Mais partículas:
+       250
+
+       Menos partículas:
+       80
+
+       Valor padrão:
+       150
+
+       ========================================================= */
+
+    const numParticles = 150;
+
+
+    /* =========================================================
+       🔗 DISTÂNCIA DAS CONEXÕES
+       =========================================================
+
+       Controla a distância máxima para duas partículas
+       serem conectadas por uma linha.
+
+       Menor valor = menos linhas.
+
+       Maior valor = mais linhas.
+
+       Exemplos:
+
+       80  = poucas conexões
+       120 = padrão
+       180 = muitas conexões
+
+       ========================================================= */
+
+    const linkDistance = 120;
+
+
+    /* =========================================================
+       💨 VELOCIDADE DAS PARTÍCULAS
+       =========================================================
+
+       Controla a velocidade de movimento dos pontos.
+
+       Mais lento:
+       0.2
+
+       Normal:
+       0.5
+
+       Mais rápido:
+       1
+
+       Muito rápido:
+       2
+
+       ========================================================= */
+
+    const particleSpeed = 0.5;
+
+
+    /* =========================================================
+       ⭐ TAMANHO MÍNIMO DAS PARTÍCULAS
+       =========================================================
+
+       Define o menor tamanho que uma partícula pode ter.
+
+       Exemplo:
+       1
+
+       ========================================================= */
+
+    const particleSizeMin = 1;
+
+
+    /* =========================================================
+       ⭐ TAMANHO MÁXIMO DAS PARTÍCULAS
+       =========================================================
+
+       Define o maior tamanho que uma partícula pode ter.
+
+       Exemplo:
+       3
+
+       ========================================================= */
+
+    const particleSizeMax = 3;
+
+
+    /* =========================================================
+       📏 ESPESSURA DAS LINHAS
+       =========================================================
+
+       Controla a grossura das linhas que conectam
+       as partículas.
+
+       Linha fina:
+       0.5
+
+       Normal:
+       1
+
+       Linha grossa:
+       2
+
+       ========================================================= */
+
+    const lineWidth = 1;
+
+
+    /* =========================================================
+       🌫️ OPACIDADE DAS LINHAS
+       =========================================================
+
+       Controla a transparência das linhas.
+
+       1   = totalmente visível
+       0.7 = pouco transparente
+       0.5 = transparente
+       0.2 = muito transparente
+
+       ========================================================= */
+
+    const lineOpacity = 1;
+
+
+    /* =========================================================
+       🔧 CONVERTE HEX PARA RGB
+       ========================================================= */
+
+    function hexToRgb(hex) {
+
+        const result =
+            /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+
+        return result
+            ? {
+                r: parseInt(result[1], 16),
+                g: parseInt(result[2], 16),
+                b: parseInt(result[3], 16)
+            }
+            : null;
+    }
+
+
+    /* =========================================================
+       🖼️ CRIA O CANVAS DA CONSTELAÇÃO
+       ========================================================= */
+
+    const canvas =
+        document.createElement('canvas');
+
+    canvas.id =
+        'constellation-bg';
+
+    document.body.prepend(canvas);
+
+    const ctx =
+        canvas.getContext('2d');
+
+
+    /* =========================================================
+       📐 TAMANHO DO CANVAS
+       ========================================================= */
+
+    const resizeCanvas = () => {
+
+        canvas.width =
+            window.innerWidth;
+
+        canvas.height =
+            window.innerHeight;
+
+    };
+
+
+    window.addEventListener(
+        'resize',
+        resizeCanvas
+    );
+
+    resizeCanvas();
+
+
+    /* =========================================================
+       🎨 CONFIGURAÇÃO DA COR DAS LINHAS
+       ========================================================= */
+
+    const particleColorRgb =
+        hexToRgb(particleColor);
+
+    const lineColor =
+        particleColorRgb
+            ? `rgba(
+                ${particleColorRgb.r},
+                ${particleColorRgb.g},
+                ${particleColorRgb.b},
+            `
+            : 'rgba(59, 130, 246, ';
+
+
+    /* =========================================================
+       ⭐ CLASSE DAS PARTÍCULAS
+       ========================================================= */
+
+    class Particle {
+
+        constructor() {
+
+            /* 📍 POSIÇÃO INICIAL */
+
+            this.x =
+                Math.random() *
+                canvas.width;
+
+            this.y =
+                Math.random() *
+                canvas.height;
+
+
+            /* 💨 VELOCIDADE */
+
+            this.vx =
+                (Math.random() - 0.5) *
+                particleSpeed;
+
+            this.vy =
+                (Math.random() - 0.5) *
+                particleSpeed;
+
+
+            /* ⭐ TAMANHO ALEATÓRIO */
+
+            this.size =
+                Math.random() *
+                (
+                    particleSizeMax -
+                    particleSizeMin
+                ) +
+                particleSizeMin;
+
+        }
+
+
+        /* =====================================================
+           🔄 MOVIMENTO DAS PARTÍCULAS
+           ===================================================== */
+
+        update() {
+
+            this.x +=
+                this.vx;
+
+            this.y +=
+                this.vy;
+
+
+            /* 🔁 REBATE NA LATERAL */
+
+            if (
+                this.x < 0 ||
+                this.x > canvas.width
+            ) {
+
+                this.vx *= -1;
+
+            }
+
+
+            /* 🔁 REBATE NO TOPO / BASE */
+
+            if (
+                this.y < 0 ||
+                this.y > canvas.height
+            ) {
+
+                this.vy *= -1;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           ✨ DESENHA A PARTÍCULA
+           ===================================================== */
+
+        draw(ctx) {
+
+            ctx.fillStyle =
+                particleColor;
+
+            ctx.beginPath();
+
+            ctx.arc(
+                this.x,
+                this.y,
+                this.size,
+                0,
+                Math.PI * 2
+            );
+
+            ctx.fill();
+
+        }
+
+    }
+
+
+    /* =========================================================
+       ⭐ CRIA AS PARTÍCULAS
+       ========================================================= */
+
+    const particles = [];
+
+
+    for (
+        let i = 0;
+        i < numParticles;
+        i++
+    ) {
+
+        particles.push(
+            new Particle()
+        );
+
+    }
+
+
+    /* =========================================================
+       🎬 ANIMAÇÃO DA CONSTELAÇÃO
+       ========================================================= */
+
+    function animate() {
+
+        /* 🧹 LIMPA A TELA */
+
+        ctx.clearRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+
+        /* =====================================================
+           ⭐ ATUALIZA AS PARTÍCULAS
+           ===================================================== */
+
+        particles.forEach(
+            particle => {
+
+                particle.update();
+
+                particle.draw(ctx);
+
+            }
+        );
+
+
+        /* =====================================================
+           🔗 CRIA AS LINHAS ENTRE AS PARTÍCULAS
+           ===================================================== */
+
+        for (
+            let i = 0;
+            i < numParticles;
+            i++
+        ) {
+
+            for (
+                let j = i + 1;
+                j < numParticles;
+                j++
+            ) {
+
+                const dx =
+                    particles[i].x -
+                    particles[j].x;
+
+                const dy =
+                    particles[i].y -
+                    particles[j].y;
+
+
+                /* 📐 CALCULA A DISTÂNCIA */
+
+                const distance =
+                    Math.sqrt(
+                        dx * dx +
+                        dy * dy
+                    );
+
+
+                /* =================================================
+                   🔗 VERIFICA SE AS PARTÍCULAS
+                   DEVEM SER CONECTADAS
+                   ================================================= */
+
+                if (
+                    distance <
+                    linkDistance
+                ) {
+
+                    /* 🌫️ CALCULA A OPACIDADE */
+
+                    const opacity =
+                        (
+                            1 -
+                            distance /
+                            linkDistance
+                        ) *
+                        lineOpacity;
+
+
+                    /* 🎨 COR DA LINHA */
+
+                    ctx.strokeStyle =
+                        lineColor +
+                        opacity +
+                        ')';
+
+
+                    /* 📏 ESPESSURA DA LINHA */
+
+                    ctx.lineWidth =
+                        lineWidth;
+
+
+                    /* ✏️ DESENHA A LINHA */
+
+                    ctx.beginPath();
+
+                    ctx.moveTo(
+                        particles[i].x,
+                        particles[i].y
+                    );
+
+                    ctx.lineTo(
+                        particles[j].x,
+                        particles[j].y
+                    );
+
+                    ctx.stroke();
+
+                }
+
+            }
+
+        }
+
+
+        /* 🔄 CONTINUA A ANIMAÇÃO */
+
+        requestAnimationFrame(
+            animate
+        );
+
+    }
+
+
+    /* =========================================================
+       🚀 INICIA A CONSTELAÇÃO
+       ========================================================= */
+
+    animate();
+
+})();
