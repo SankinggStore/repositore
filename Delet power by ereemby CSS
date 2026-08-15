@@ -1,0 +1,41 @@
+/* =========================================================
+   👑 CRÉDITOS / AUTOR DO CÓDIGO
+
+   Autor: Kingg
+   Cargo: Adm/CEO da Sankingg e Prime Spark / Dev
+
+   🌐 SERVIDORES DISCORD:
+
+   Prime Spark:
+   https://discord.gg/CZXQWgjkYH
+
+   Sankingg — Mais códigos:
+   https://discord.gg/eY9gmVG6KG
+
+   📦 REPOSITÓRIO:
+   https://github.com/SankinggStore/repositore
+
+   📱 CONTATOS:
+
+   WhatsApp:
+   +55 19 97137-2646
+
+   Instagram:
+   @_sankingg.store
+
+   =========================================================
+   💜 PRIME SPARK x SANKINGG 👑
+   ========================================================= */
+
+
+/* =========================================================
+   🚫 REMOVER "POWERED BY EREEMBY"
+
+   Este código oculta o elemento responsável por
+   exibir o "Powered by Ereemby" no site.
+
+   ========================================================= */
+
+#powered-ereemby {
+    display: none !important;
+}
